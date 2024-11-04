@@ -1,6 +1,6 @@
 # Pi Kiosk
 
-TODO: Photo of my setup goes here.
+<p align="center"><img alt="Raspberry Pi Touch Display 2 with HA Kiosk" src="/resources/pi-touch-display-kiosk.jpeg" height="auto" width="600"></p>
 
 This project contains the simplest form of a persistent Raspberry Pi-based browser kiosk.
 
