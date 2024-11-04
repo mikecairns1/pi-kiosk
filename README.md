@@ -67,6 +67,10 @@ Another alternative is to set up the Pi with [Pi Connect](https://www.raspberryp
 
 If you want to get _really_ fancy, you can [use something like `xdotool`](https://unix.stackexchange.com/a/703023/16194) and wire up a button to emulate keypresses to quit the browser.
 
+## License
+
+GPL v3
+
 ## Author
 
 This project was created by Jeff Geerling in 2024, loosely following this guide from PiMyLifeUp: [Raspberry Pi Kiosk using Chromium](https://pimylifeup.com/raspberry-pi-kiosk/).
