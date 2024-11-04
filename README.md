@@ -1,10 +1,18 @@
 # Pi Kiosk
 
+TODO: Photo of my setup goes here.
+
 This project contains the simplest form of a persistent Raspberry Pi-based browser kiosk.
 
 Kiosks are useful if you want to build a web dashboard for something and have the Pi display it, or have a custom web page or online video play automatically when your Pi boots up, and take over the full screen.
 
 This configuration is not meant to be highly secure, or extremely robust, I just use it when I want to pop a web page up on one of my Pis full-screen, like for a Home Assistant control panel.
+
+For my own Kiosk, I'm using the following hardware to display a Home Assistant dashboard:
+
+  - Raspberry Pi 5 (2GB)
+  - Raspberry Pi Touch Display 2
+  - [Touch Display 2 3D Printed Stand](https://www.printables.com/model/1062445-raspberry-pi-touch-display-2-stand)
 
 ## Setup
 
@@ -40,6 +48,31 @@ sudo systemctl enable kiosk.service
 ```
 sudo systemctl start kiosk
 ```
+
+## Power Savings
+
+Since a Kiosk will likely run quite frequently (or all day), there are a few things you can do to reduce its power consumption:
+
+### Reduce shutdown power consumption by 140x
+
+Following the [guide in my blog post](https://www.jeffgeerling.com/blog/2023/reducing-raspberry-pi-5s-power-consumption-140x), edit your EEPROM file (`sudo rpi-eeprom-config -e`) and set the following settings:
+
+```
+[all]
+BOOT_UART=1
+WAKE_ON_GPIO=0
+POWER_OFF_ON_HALT=1
+```
+
+(Don't worry about changing any other values.) Save the changes and wait for the EEPROM to be updated. Once it is, the Pi 5's power consumption while shut down will be less than 0.01W (with the Pi's default configuration, the shutdown power consumption could be up to 1-2W!).
+
+### Dim the screen while not in use
+
+Running an always-on display at 100% brightness all day is not that helpful.
+
+Right now I'm looking into the best way to dim the screen after a period of time, or to set a timeout where the screen will be off (0% brightness) and you can tap-to-wake.
+
+See issue: [Allow for screen to dim after a certain amount of time](https://github.com/geerlingguy/pi-kiosk/issues/2)
 
 ## Debugging
 
