@@ -49,6 +49,18 @@ sudo systemctl enable kiosk.service
 sudo systemctl start kiosk
 ```
 
+## Rotating the Screen
+
+To rotate the Touch Display immediately, you can run:
+
+```
+wlr-randr --output DSI-1 --transform 90
+```
+
+This orientation assumes the Pi is oriented so the USB-C plug is facing towards the bottom of the Touch Display. If you have the display plugged into the DSI-2 port, change the `--output` accordingly.
+
+To persist the rotation setting, either configure the screen rotation on the display using the "Screen Configuration" utility, or edit the `kanshi` config file at `~/.config/kanshi/config`.
+
 ## Power Savings
 
 Since a Kiosk will likely run quite frequently (or all day), there are a few things you can do to reduce its power consumption:
@@ -70,7 +82,7 @@ POWER_OFF_ON_HALT=1
 
 Running an always-on display at 100% brightness all day is not that helpful.
 
-Right now I'm looking into the best way to dim the screen after a period of time, or to set a timeout where the screen will be off (0% brightness) and you can tap-to-wake.
+Right now I'm looking into the best way to dim the screen after a period of time, or configure the 'Screen Blanking' option in Pi OS.
 
 See issue: [Allow for screen to dim after a certain amount of time](https://github.com/geerlingguy/pi-kiosk/issues/2)
 
