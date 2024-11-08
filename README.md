@@ -61,6 +61,14 @@ This orientation assumes the Pi is oriented so the USB-C plug is facing towards 
 
 To persist the rotation setting, either configure the screen rotation on the display using the "Screen Configuration" utility, or edit the `kanshi` config file at `~/.config/kanshi/config`.
 
+### Rotating the screen during boot (pre-GUI)
+
+You can also set the display to be rotated during boot (either with the Pi Desktop splash screen or console output) by editing `/boot/firmware/cmdline.txt`. Add the following before the last parameter and reboot:
+
+```
+video=DSI-1:panel_orientation=left_side_up
+```
+
 ## Power Savings
 
 Since a Kiosk will likely run quite frequently (or all day), there are a few things you can do to reduce its power consumption:
