@@ -66,9 +66,9 @@ To persist the rotation setting, either configure the screen rotation on the dis
 You can also set the display to be rotated during boot (either with the Pi Desktop splash screen or console output) by editing `/boot/firmware/cmdline.txt`. Add the following before the last parameter and reboot:
 
 ```
+# Orientation options: normal, upside_down, left_side_up, right_side_up
 video=DSI-1:panel_orientation=left_side_up
 ```
-Options are "normal", "upside_down", "left_side_up", or "right_side_up".
 
 ## Power Savings
 
